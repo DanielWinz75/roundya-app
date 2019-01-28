@@ -1,0 +1,11 @@
+<form [formGroup]="loginForm" (ngSubmit)="login()">
+    <mat-form-field>
+        <!-- <input  matInput  placeholder="Username" [(ngModel)]="username"  name="username"  required> -->
+        <input matInput placeholder="Username" type="text" formControlName="username" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+    </mat-form-field>
+    <mat-form-field>
+      <!-- <input  matInput  placeholder="Password" [(ngModel)]="password"  type="password"  name="password"  required> -->
+      <input matInput placeholder="Password" type="password" formControlName="password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+    </mat-form-field> 
+</form>
+<button  mat-raised-button (click)="login()"  color="primary">Login</button>
