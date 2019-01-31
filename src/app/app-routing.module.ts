@@ -6,12 +6,12 @@ import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   {
-    path: 'list-places',
+    path: 'places',
     component: ListPlacesComponent,
     canActivate: [AuthGuard]
   },
   { path: 'login', component: LoginComponent },
-  { path: '**', redirectTo: '' }
+  { path: '**', redirectTo: 'login' }
 ];
 
 @NgModule({

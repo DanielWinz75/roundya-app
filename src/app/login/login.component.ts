@@ -17,7 +17,6 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private route: ActivatedRoute,
     private router: Router,
     private authenticationService: AuthService
   ) {}
@@ -30,9 +29,6 @@ export class LoginComponent implements OnInit {
 
     // reset login status
     this.authenticationService.logout();
-
-    // get return url from route parameters or default to '/'
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
   // convenience getter for easy access to form fields
@@ -53,11 +49,8 @@ export class LoginComponent implements OnInit {
       .login(this.f.username.value, this.f.password.value)
       .pipe(first())
       .subscribe(
-        token => {
-          console.log('Yeah: ', token);
-
-          // TBD: This is not working
-          this.router.navigate([this.returnUrl]);
+        () => {
+          this.router.navigate([environment.postLoginRoute]);
         },
         error => {
           this.error = error;

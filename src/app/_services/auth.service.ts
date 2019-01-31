@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpResponse, HttpParams } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map, first, tap } from 'rxjs/operators';
 import { User } from '../_models/ApplicationUser';
@@ -7,21 +7,21 @@ import { environment } from 'src/environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  private currentUserSubject: BehaviorSubject<User>;
-  public currentUser: Observable<User>;
+  private tokenSubject: BehaviorSubject<string>;
+  public token: Observable<string>;
 
   constructor(private http: HttpClient) {
-    this.currentUserSubject = new BehaviorSubject<User>(
-      JSON.parse(localStorage.getItem('currentUser'))
+    this.tokenSubject = new BehaviorSubject<string>(
+      JSON.parse(localStorage.getItem('token'))
     );
-    this.currentUser = this.currentUserSubject.asObservable();
+    this.token = this.tokenSubject.asObservable();
   }
 
-  public get currentUserValue(): User {
-    return this.currentUserSubject.value;
+  public get tokenValue(): string {
+    return this.tokenSubject.value;
   }
 
-  login(username: string, password: string) {
+  public login(username: string, password: string): Observable<void> {
     return this.http
       .post<any>(
         `${environment.apiUrl}/login`,
@@ -38,23 +38,18 @@ export class AuthService {
             .trim();
 
           if (jwtToken) {
-            localStorage.setItem('currentUser', JSON.stringify(jwtToken));
-          }
-          return jwtToken;
+            localStorage.setItem('token', JSON.stringify(jwtToken));
 
-          // console.log('User: ', user);
-          // if (user && user.token) {
-          //   // store user details and jwt token in local storage to keep user logged in between page refreshes
-          //   localStorage.setItem('currentUser', JSON.stringify(user));
-          //   this.currentUserSubject.next(user);
-          // }
+            // TBD: I don't understand this step yet
+            this.tokenSubject.next(jwtToken);
+          }
         })
       );
   }
 
   logout() {
     // remove user from local storage to log user out
-    localStorage.removeItem('currentUser');
-    this.currentUserSubject.next(null);
+    localStorage.removeItem('token');
+    this.tokenSubject.next(null);
   }
 }
