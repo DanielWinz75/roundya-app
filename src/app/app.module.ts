@@ -5,20 +5,20 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ListPlacesComponent } from './list-places/list-places.component';
 import { LoginComponent } from './login/login.component';
-import { AuthComponent } from './auth/auth.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TheMaterialModule } from './material.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { JwtInterceptor } from './_utils/jwt.interceptor';
 import { ErrorInterceptor } from './_utils/error.interceptor';
+import { SignUpComponent } from './signup/signup.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ListPlacesComponent,
     LoginComponent,
-    AuthComponent
+    SignUpComponent
   ],
   imports: [
     BrowserModule,
