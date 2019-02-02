@@ -1,3 +1,55 @@
-<p>
-  sign up works
-</p>
+
+
+<form name="form" #f="ngForm" 
+  (ngSubmit)="f.form.valid && onSubmit()" 
+  [appMustMatch]="['password', 'confirmPassword']" 
+  novalidate>
+
+  <mat-form-field>
+    <input name="username" matInput placeholder="Username" type="text" 
+      #username="ngModel" 
+      [(ngModel)]="model.username" 
+      minlength="{{ minLengthUsername }}"
+      required />
+
+    <mat-hint align="end">Min {{ minLengthUsername }} characters long.</mat-hint>
+    <div *ngIf="f.submitted && username.invalid">
+      <mat-error *ngIf="username.errors.required">Username required</mat-error>
+      <mat-error *ngIf="username.errors.minlength">Min length {{ minLengthUsername }} characters</mat-error>
+    </div>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input name="password" matInput placeholder="Password" type="password" 
+      #password="ngModel" 
+      [(ngModel)]="model.password" 
+      minlength="12"
+      required />
+
+    <mat-hint align="end">Min 12 characters long.</mat-hint>
+    <div *ngIf="f.submitted && password.invalid">
+        <mat-error *ngIf="password.errors.required">Password required</mat-error>
+        <mat-error *ngIf="password.errors.minlength">Min length 12 characters</mat-error>
+    </div>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input name="confirmPassword" matInput placeholder="Confirm password" type="password" 
+      #confirmPassword="ngModel" 
+      [(ngModel)]="model.confirmPassword" 
+      minlength="12"
+      required />
+
+    <mat-hint align="end">Min 12 characters long.</mat-hint>
+    <div *ngIf="f.submitted && confirmPassword.invalid">
+      <mat-error *ngIf="confirmPassword.errors.required">Confirm Password is required</mat-error>
+      <mat-error *ngIf="confirmPassword.errors.mustMatch">Passwords must match</mat-error>
+    </div>
+
+  </mat-form-field>
+
+  <p><button  mat-raised-button type="submit" color="primary">Login</button></p>
+</form>
+
+
+

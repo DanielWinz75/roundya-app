@@ -1,12 +1,12 @@
-<form [formGroup]="loginForm" (ngSubmit)="login()">
+<form name="form" #f="ngForm" (ngSubmit)="login()" novalidate>
     <mat-form-field>
-        <!-- <input  matInput  placeholder="Username" [(ngModel)]="username"  name="username"  required> -->
-        <input matInput placeholder="Username" type="text" formControlName="username" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+        <input matInput placeholder="Username" name="username" type="text" #username="ngModel" [(ngModel)]="model.username" />
     </mat-form-field>
     <mat-form-field>
-      <!-- <input  matInput  placeholder="Password" [(ngModel)]="password"  type="password"  name="password"  required> -->
-      <input matInput placeholder="Password" type="password" formControlName="password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+      <input matInput placeholder="Password" name="password" type="password" #password="ngModel" [(ngModel)]="model.password" />
     </mat-form-field> 
+
+    <p><button mat-raised-button type="submit" color="primary">Login</button></p>
 </form>
-<button  mat-raised-button (click)="login()"  color="primary">Login</button>
+
 <button  mat-stroked-button [routerLink]="['/signup']" color="primary">Sign Up</button>
