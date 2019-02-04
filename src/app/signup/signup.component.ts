@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { SignUpService } from '../_services/signup.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-up',
@@ -10,11 +12,24 @@ export class SignUpComponent {
   minLengthPassword = 12;
   model: any = {
     username: '',
-    password: ''
+    password: '',
+    email: ''
   };
+  error: string;
+  loading: boolean;
+
+  constructor(private router: Router, private signupService: SignUpService) {}
 
   onSubmit() {
-    this.model.submitted = true;
-    alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.model));
+    this.signupService.signup(this.model).subscribe(
+      () => {
+        this.model.submitted = true;
+        this.router.navigate(['login']);
+      },
+      error => {
+        this.error = error;
+        this.loading = false;
+      }
+    );
   }
 }

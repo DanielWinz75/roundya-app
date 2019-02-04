@@ -42,13 +42,30 @@
 
     <mat-hint align="end">Min 12 characters long.</mat-hint>
     <div *ngIf="f.submitted && confirmPassword.invalid">
-      <mat-error *ngIf="confirmPassword.errors.required">Confirm Password is required</mat-error>
-      <mat-error *ngIf="confirmPassword.errors.mustMatch">Passwords must match</mat-error>
+      <mat-error *ngIf="confirmPassword.errors.required">Confirmation required</mat-error>
+      <mat-error *ngIf="confirmPassword.errors.mustMatch">Confirmation must match password</mat-error>
     </div>
-
   </mat-form-field>
 
-  <p><button  mat-raised-button type="submit" color="primary">Login</button></p>
+  <mat-form-field>
+    <input name="email" matInput placeholder="Email" type="text" 
+      #email="ngModel" 
+      [(ngModel)]="model.email" 
+      pattern="[^ @]*@[^ @]*"
+      required />
+
+    <mat-hint align="end">Valid email address</mat-hint>
+    <div *ngIf="f.submitted && email.invalid">
+      <mat-error *ngIf="email.errors.required">Email  is required</mat-error>
+      <mat-error *ngIf="email.errors.pattern">Please enter valid email addreass</mat-error>
+    </div>
+  </mat-form-field>
+
+  <p><button  mat-raised-button type="submit" color="primary">Sign Up</button></p>
+
+  <mat-error *ngIf="error">
+      {{ error }}
+  </mat-error>
 </form>
 
 

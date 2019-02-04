@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpResponse, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { map, first, tap } from 'rxjs/operators';
-import { User } from '../_models/ApplicationUser';
+import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 
 @Injectable({ providedIn: 'root' })
@@ -39,8 +38,6 @@ export class AuthService {
 
           if (jwtToken) {
             localStorage.setItem('token', JSON.stringify(jwtToken));
-
-            // TBD: I don't understand this step yet
             this.tokenSubject.next(jwtToken);
           }
         })

@@ -4,6 +4,8 @@ import { ListPlacesComponent } from './list-places/list-places.component';
 import { AuthGuardService as AuthGuard } from './_services/auth-guard.service';
 import { LoginComponent } from './login/login.component';
 import { SignUpComponent } from './signup/signup.component';
+import { CheckTokenNotExistsService } from './_services/token-not-exists.service';
+import { AddPlaceComponent } from './add-place/add-place.component';
 
 const routes: Routes = [
   {
@@ -11,8 +13,17 @@ const routes: Routes = [
     component: ListPlacesComponent,
     canActivate: [AuthGuard]
   },
+  {
+    path: 'add-place',
+    component: AddPlaceComponent,
+    canActivate: [AuthGuard]
+  },
   { path: 'login', component: LoginComponent },
-  { path: 'signup', component: SignUpComponent },  
+  {
+    path: 'signup',
+    component: SignUpComponent,
+    canActivate: [CheckTokenNotExistsService]
+  },
   { path: '**', redirectTo: 'login' }
 ];
 

@@ -13,6 +13,7 @@ import { JwtInterceptor } from './_utils/jwt.interceptor';
 import { ErrorInterceptor } from './_utils/error.interceptor';
 import { SignUpComponent } from './signup/signup.component';
 import { MustMatchDirective } from './_directives/must-match.directive';
+import { AddPlaceComponent } from './add-place/add-place.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { MustMatchDirective } from './_directives/must-match.directive';
     ListPlacesComponent,
     LoginComponent,
     SignUpComponent,
-    MustMatchDirective
+    MustMatchDirective,
+    AddPlaceComponent
   ],
   imports: [
     BrowserModule,

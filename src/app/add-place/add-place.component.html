@@ -1,0 +1,27 @@
+<form name="form" 
+  #f="ngForm" 
+  (ngSubmit)="f.form.valid && onSubmit()" 
+  (ngSubmit)="onSubmit()" 
+  novalidate>
+
+  <mat-form-field>
+      <input name="username" matInput placeholder="Username" type="text" 
+        #username="ngModel" 
+        [(ngModel)]="model.username" 
+        minlength="{{ minLengthUsername }}"
+        required />
+  
+      <mat-hint align="end">Min {{ minLengthUsername }} characters long.</mat-hint>
+      <div *ngIf="f.submitted && username.invalid">
+        <mat-error *ngIf="username.errors.required">Username required</mat-error>
+        <mat-error *ngIf="username.errors.minlength">Min length {{ minLengthUsername }} characters</mat-error>
+      </div>
+    </mat-form-field>
+    
+    <p><button  mat-raised-button type="submit" color="primary">Sign Up</button></p>
+
+    <mat-error *ngIf="error">
+        {{ error }}
+    </mat-error>
+
+</form>

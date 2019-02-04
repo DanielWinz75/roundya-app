@@ -10,3 +10,7 @@
 </form>
 
 <button  mat-stroked-button [routerLink]="['/signup']" color="primary">Sign Up</button>
+
+<mat-error *ngIf="error">
+    {{ error }}
+</mat-error>
