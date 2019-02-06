@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ConfigsStore } from '../_stores/configs.store';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-add-place',
@@ -18,9 +20,15 @@ export class AddPlaceComponent implements OnInit {
     };
   };
 
-  constructor() {}
+  predicates$: Observable<Array<string>>;
+  subjects$: Observable<Array<string>>;
 
-  ngOnInit() {}
+  constructor(private configsStore: ConfigsStore) {}
+
+  ngOnInit() {
+    this.predicates$ = this.configsStore.getPredicates$();
+    this.subjects$ = this.configsStore.getSubjects$();
+  }
 
   onSubmit() {}
 }

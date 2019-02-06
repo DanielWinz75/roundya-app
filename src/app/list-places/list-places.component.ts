@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LoadConfigsService } from '../_services/load-configs.service';
+import { ConfigsStore } from '../_stores/configs.store';
 
 @Component({
   selector: 'app-list-places',
@@ -7,10 +7,10 @@ import { LoadConfigsService } from '../_services/load-configs.service';
   styleUrls: ['./list-places.component.scss']
 })
 export class ListPlacesComponent implements OnInit {
-  constructor(private loadConfigsService: LoadConfigsService) {}
-
-  ngOnInit() {
-    console.log('in list places');
-    this.loadConfigsService.loadConfigs();
+  constructor(private configsStore: ConfigsStore) {
+    console.log('constructor');
+    this.configsStore.init();
   }
+
+  ngOnInit() {}
 }

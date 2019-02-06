@@ -5,6 +5,14 @@
   novalidate>
 
   <mat-form-field>
+    <mat-select placeholder="Predicates">
+      <mat-option *ngFor="let predicate of predicates$ | async" [value]="predicate">
+        {{predicate}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <!-- <mat-form-field>
       <input name="username" matInput placeholder="Username" type="text" 
         #username="ngModel" 
         [(ngModel)]="model.username" 
@@ -22,6 +30,6 @@
 
     <mat-error *ngIf="error">
         {{ error }}
-    </mat-error>
+    </mat-error> -->
 
 </form>
