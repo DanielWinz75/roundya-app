@@ -8,27 +8,17 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ConfigsStore {
   private predicates$: BehaviorSubject<Array<string>>;
-  private subjects$: BehaviorSubject<Array<string>>;
 
   constructor(private http: HttpClient) {
     this.predicates$ = new  BehaviorSubject(undefined);
-    this.subjects$ = new  BehaviorSubject(undefined);
   }
 
   getPredicates(): Array<string> {
     return this.predicates$.getValue();
   }
 
-  getSubjects(): Array<string> {
-    return this.subjects$.getValue();
-  }
-
   getPredicates$(): Observable<Array<string>> {
     return this.predicates$.asObservable();
-  }
-
-  getSubjects$(): Observable<Array<string>> {
-    return this.subjects$.asObservable();
   }
 
   init(): void {
@@ -38,9 +28,8 @@ export class ConfigsStore {
 
     this.http.get(environment.configsUrl)
       .subscribe(resp => {
-        console.log(resp);
+        console.log('predicates: ', resp);
         this.predicates$.next(resp['predicates']);
-        this.subjects$.next(resp['subjects']);
       });
   }
 }

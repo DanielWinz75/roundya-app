@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ConfigsStore } from '../_stores/configs.store';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-add-place',
@@ -20,15 +21,25 @@ export class AddPlaceComponent implements OnInit {
     };
   };
 
-  predicates$: Observable<Array<string>>;
-  subjects$: Observable<Array<string>>;
+  singPredicates$: Observable<Array<string>>;
+  plurPredicates$: Observable<Array<string>>;
 
   constructor(private configsStore: ConfigsStore) {}
 
   ngOnInit() {
-    this.predicates$ = this.configsStore.getPredicates$();
-    this.subjects$ = this.configsStore.getSubjects$();
+    this.singPredicates$ = this.configsStore.getPredicates$()
+    .pipe(map(preds => {
+      return preds.map(pred => 'predicate.singular.' + pred);
+    }));
+    this.plurPredicates$ = this.configsStore.getPredicates$()
+    .pipe(map(preds => {
+      return preds.map(pred => 'predicate.plural.' + pred);
+    }));  
   }
 
   onSubmit() {}
+
+  selectSubjectType() {
+
+  }
 }

@@ -8,12 +8,14 @@ import { LoginComponent } from './login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TheMaterialModule } from './material.module';
 import { FormsModule } from '@angular/forms';
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule, HttpClient } from '@angular/common/http';
 import { JwtInterceptor } from './_utils/jwt.interceptor';
 import { ErrorInterceptor } from './_utils/error.interceptor';
 import { SignUpComponent } from './signup/signup.component';
 import { MustMatchDirective } from './_directives/must-match.directive';
 import { AddPlaceComponent } from './add-place/add-place.component';
+import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,14 @@ import { AddPlaceComponent } from './add-place/add-place.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     TheMaterialModule,
-    HttpClientModule
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+          provide: TranslateLoader,
+          useFactory: HttpLoaderFactory,
+          deps: [HttpClient]
+      }
+    })
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
@@ -39,3 +48,8 @@ import { AddPlaceComponent } from './add-place/add-place.component';
   bootstrap: [AppComponent]
 })
 export class AppModule {}
+
+// required for AOT compilation
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}

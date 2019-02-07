@@ -4,10 +4,21 @@
   (ngSubmit)="onSubmit()" 
   novalidate>
 
+  <!-- <mat-form-field>
+    <mat-select placeholder="Subject">
+      <mat-option [value]="subject">
+        {{'subject.singular' | translate}}
+      </mat-option>
+      <mat-option [value]="subject">
+        {{'subject.plural' | translate}}
+      </mat-option>      
+    </mat-select> -->
+  </mat-form-field>
+
   <mat-form-field>
-    <mat-select placeholder="Predicates">
-      <mat-option *ngFor="let predicate of predicates$ | async" [value]="predicate">
-        {{predicate}}
+    <mat-select placeholder="Predicate">
+      <mat-option *ngFor="let predicate of plurPredicates$ | async" [value]="predicate">
+        {{predicate | translate}}
       </mat-option>
     </mat-select>
   </mat-form-field>
