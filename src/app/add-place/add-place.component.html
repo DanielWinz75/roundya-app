@@ -1,46 +1,58 @@
 <form name="form" 
   #f="ngForm" 
   (ngSubmit)="f.form.valid && onSubmit()" 
-  (ngSubmit)="onSubmit()" 
   novalidate>
 
-  <!-- <mat-form-field>
-    <mat-select placeholder="Subject">
-      <mat-option [value]="subject">
+  <mat-form-field>
+    <mat-select matInput placeholder="{{ 'addplace.subject' | translate }}" name="subject" 
+      #subject="ngModel" 
+      [(ngModel)]="model.subject"
+      (selectionChange)="onSelectSubject()"
+      required>
+      <mat-option value="singular">
         {{'subject.singular' | translate}}
       </mat-option>
-      <mat-option [value]="subject">
+      <mat-option value="plural">
         {{'subject.plural' | translate}}
-      </mat-option>      
+      </mat-option>     
     </mat-select> 
-  </mat-form-field> -->
+  </mat-form-field>
 
   <mat-form-field>
-    <mat-select placeholder="Predicate">
-      <mat-option *ngFor="let predicate of plurPredicates$ | async" [value]="predicate">
+    <mat-select matInput placeholder="{{ 'addplace.predicate' | translate }}" name="predicate" 
+      #predicate="ngModel" 
+      [(ngModel)]="model.predicate"
+      required>
+      <mat-option *ngFor="let predicate of predicates$ | async" [value]="splitLast(predicate)">
         {{predicate | translate}}
       </mat-option>
     </mat-select>
   </mat-form-field>
 
-  <!-- <mat-form-field>
-      <input name="username" matInput placeholder="Username" type="text" 
-        #username="ngModel" 
-        [(ngModel)]="model.username" 
-        minlength="{{ minLengthUsername }}"
-        required />
-  
-      <mat-hint align="end">Min {{ minLengthUsername }} characters long.</mat-hint>
-      <div *ngIf="f.submitted && username.invalid">
-        <mat-error *ngIf="username.errors.required">Username required</mat-error>
-        <mat-error *ngIf="username.errors.minlength">Min length {{ minLengthUsername }} characters</mat-error>
-      </div>
-    </mat-form-field>
-    
-    <p><button  mat-raised-button type="submit" color="primary">Sign Up</button></p>
+  <mat-form-field>
+    <input name="object" matInput placeholder="{{ 'addplace.object' | translate }}" type="text" 
+      #object="ngModel"
+      [(ngModel)]="model.object" 
+      required />
+    <div *ngIf="f.submitted && object.invalid">
+      <mat-error *ngIf="object.errors.required">{{ input.error.required }}</mat-error>
+    </div>
+  </mat-form-field>
 
-    <mat-error *ngIf="error">
-        {{ error }}
-    </mat-error> -->
+  <mat-form-field>
+    <textarea name="text" matInput placeholder="{{ 'addplace.text' | translate }}"
+      (input)="doTextAreaChange($event)"
+      #object="ngModel"
+      [(ngModel)]="model.text"
+      maxlength="300" >
+    </textarea>
+    <mat-hint align="end">{{ 'addplace.text.length' | translate:{remainingCharacters: remainingChars} }}</mat-hint>    
+  </mat-form-field>
+
+  <p><button  mat-raised-button type="submit" color="primary">{{ 'button.post' | translate }}</button></p>
+
+  <mat-error *ngIf="error">
+      {{ error }}
+  </mat-error>
 
 </form>

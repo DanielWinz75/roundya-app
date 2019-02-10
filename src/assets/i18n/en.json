@@ -1,5 +1,5 @@
 {
-    "subject.plural" : "we",
+    "subject.plural" : "We",
     "subject.singular" : "I",
     "predicate.singular.buy" : "buy",
     "predicate.singular.sell" : "sell",
@@ -12,5 +12,12 @@
     "predicate.plural.search" : "search",
     "predicate.plural.offer" : "offer",
     "predicate.plural.need" : "need",
-    "predicate.plural.invite" : "invite"
+    "predicate.plural.invite" : "invite",
+    "addplace.subject" : "Subject",
+    "addplace.predicate" : "Predicate",
+    "addplace.object" : "Object",
+    "addplace.text" : "Your text",
+    "input.error.required" : "Input is required",
+    "addplace.text.length" : "{{ remainingCharacters }} characters are remaining.",
+    "button.post": "post"
 }

@@ -1,0 +1,23 @@
+{
+    "subject.plural" : "Wir",
+    "subject.singular" : "Ich",
+    "predicate.singular.buy" : "kaufe",
+    "predicate.singular.sell" : "verkaufe",
+    "predicate.singular.search" : "suche",
+    "predicate.singular.offer" : "biete an",
+    "predicate.singular.need" : "benötige",
+    "predicate.singular.invite" : "lade ein",
+    "predicate.plural.buy" : "kaufen",
+    "predicate.plural.sell" : "verkaufen",
+    "predicate.plural.search" : "suchen",
+    "predicate.plural.offer" : "bieten an",
+    "predicate.plural.need" : "benötigen",
+    "predicate.plural.invite" : "laden ein",
+    "addplace.subject" : "Subjekt",
+    "addplace.predicate" : "Prädikat",
+    "addplace.object" : "Objekt",
+    "addplace.text" : "Dein Text",
+    "input.error.required" : "Eingabe erforderlich",
+    "addplace.text.length" : "Du kannst noch {{ remainingCharacters }} Zeichen eingeben.",
+    "button.post": "veröffentliche"
+}
