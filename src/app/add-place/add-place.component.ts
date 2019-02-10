@@ -4,7 +4,6 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { AddPlaceService } from '../_services/add-place.service';
 import { Router } from '@angular/router';
-import { ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-add-place',
@@ -12,9 +11,6 @@ import { ViewChild } from '@angular/core';
   styleUrls: ['./add-place.component.scss']
 })
 export class AddPlaceComponent implements OnInit {
-
-  @ViewChild('predicate') predSelector;
-
   remainingChars = 300;
 
   model: any = {
