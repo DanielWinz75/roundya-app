@@ -33,9 +33,6 @@ export class LoadPlacesService {
   getPlacesByCoordinates$(coordinates: Array<number>): Observable<Array<Place>> {
     this.requestorLocation.location.coordinates[0] = coordinates[0];
     this.requestorLocation.location.coordinates[1] = coordinates[1];
-
-
-
     return this.http.post<any>(`${environment.apiUrl}/places/near`, this.requestorLocation, {
       observe: 'response'
     }).pipe(map(resp => {

@@ -1,5 +1,5 @@
 import { ConfigsStore } from '../_stores/configs.store';
-import { Component } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { LoadPlacesService } from '../_services/load-places.service';
 import { Router } from '@angular/router';
@@ -18,38 +18,38 @@ import { Subject } from 'rxjs';
     ]),
   ],
 })
-export class ListPlacesComponent {
+export class ListPlacesComponent implements OnInit, AfterViewInit {
   displayedColumns = ['whoWantsToDoWhat', 'dist', 'appr'];
   dataSource: ListPlacesDatasource;
   error: string;
   coordinatesSubject: Subject<Array<number>> = new Subject();
 
   isExpansionDetailRow = (i: number, row: Object) => row.hasOwnProperty('detailRow');
-  // expandedElement: any;
 
   constructor(private configsStore: ConfigsStore, private loadPlacesService: LoadPlacesService, private router: Router) {
     this.configsStore.init();
-    navigator.geolocation.getCurrentPosition(position => {
-      if (!navigator.geolocation) {
-        const error = 'Browser doesn\'t support geolocation.';
-        this.coordinatesSubject.next([0, 0]);
-      }
-      const coordinates = [position.coords.latitude, position.coords.longitude];
-      this.coordinatesSubject.next(coordinates);
-    });
+    if (!navigator.geolocation) {
+      console.log('Browser doesn\'t support geolocation.');
+      const coordinates = [0, 0];
+      this.setDataSource(coordinates);
+    } else {
+      navigator.geolocation.getCurrentPosition(position => {
+        const coordinates = [position.coords.latitude, position.coords.longitude];
+        this.setDataSource(coordinates);
+      });
+    }
   }
 
-  ngOnInit() {
-    this.coordinatesSubject.subscribe(coordinates => {
-      console.log('coordinates: ', coordinates);
-      this.dataSource = new ListPlacesDatasource(this.loadPlacesService);
-      if (coordinates[0] === 0 && coordinates[1] === 0) {
-        this.dataSource.getAllPlaces();
-      } else {
-        this.dataSource.getNearPlaces(coordinates);
-      }
-    });
+  setDataSource(coordinates: Array<number>): void {
+    this.dataSource = new ListPlacesDatasource(this.loadPlacesService);
+    if (coordinates[0] === 0 && coordinates[1] === 0) {
+      this.dataSource.getAllPlaces();
+    } else {
+      this.dataSource.getNearPlaces(coordinates);
+    }
   }
+
+  ngOnInit() {}
 
   ngAfterViewInit() {
   }

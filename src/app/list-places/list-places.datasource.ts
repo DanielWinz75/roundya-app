@@ -11,26 +11,12 @@ import { LoadPlacesService } from '../_services/load-places.service';
 export class ListPlacesDatasource extends DataSource<Array<any>> {
 
   placesSubject: BehaviorSubject<Array<Place>> = new BehaviorSubject([]);
-  coordinatesSubject: Subject<Array<number>> = new Subject();
 
   constructor(private loadPlacesService: LoadPlacesService) {
     super();
-
-    // setTimeout(() => this.setCoordinatesSubject(), 1000);
-
-    // this.coordinatesSubject.subscribe(coordinates => {
-    //   console.log('got coors: ', coordinates);
-    //   this.loadPlacesService.getPlacesByCoordinates$(coordinates).pipe(tap(places$ => {
-    //     console.log(places$);
-    //     return this.placesSubject.next(places$)
-    //   }));
-    // });
-
   }
 
   connect(): Observable<any> {
-    console.log('places subject cont: ', this.placesSubject.value);
-
     this.placesSubject.subscribe(places => console.log('places: ', places));
     return this.placesSubject.asObservable();
   }
@@ -51,6 +37,7 @@ export class ListPlacesDatasource extends DataSource<Array<any>> {
         // finalize(() => this.loadingSubject.next(false))
       )
       .subscribe(places => {
+        console.log('next places');
         this.placesSubject.next(places);
       });
   }

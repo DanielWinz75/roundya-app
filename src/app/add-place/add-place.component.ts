@@ -20,7 +20,7 @@ export class AddPlaceComponent implements OnInit {
     ownerId: '',
     location: {
       type: 'Point',
-      coordinates: [50.7266693, 7.0801856]
+      coordinates: [0, 0]
     }
   };
   error: string;
@@ -33,7 +33,7 @@ export class AddPlaceComponent implements OnInit {
   ngOnInit() {
     navigator.geolocation.getCurrentPosition(position => {
       this.model.location.coordinates[0] = position.coords.latitude;
-      this.model.location.coordinates[1] = position.coords.longitude;      
+      this.model.location.coordinates[1] = position.coords.longitude;
     });
     this.predicates$ = this.configsStore.getPredicates$()
     .pipe(map(preds => {
