@@ -4,9 +4,9 @@ export class Place {
     predicate: '';
     object: '';
     text: '';
-    owner: '';
+    ownerId: '';
     location: {
       type: 'Point';
-      coordinates: [];
+      coordinates: [number, number];
     };
 }

@@ -28,7 +28,6 @@ export class ConfigsStore {
 
     this.http.get(environment.configsUrl)
       .subscribe(resp => {
-        console.log('predicates: ', resp);
         this.predicates$.next(resp['predicates']);
       });
   }

@@ -1,4 +1,43 @@
-
-  list-places works!
   <a routerLink="/add-place">add place</a>
 
+<div class="example-container mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource">  
+      <ng-container matColumnDef="whoWantsToDoWhat">
+        <mat-header-cell *matHeaderCellDef> Who wants to do what? </mat-header-cell>
+        <mat-cell *matCellDef="let element"> 
+          {{'subject.' + element.subject | translate}} 
+          {{'predicate.' + element.subject + '.' + element.predicate | translate}}
+          {{element.object}}
+        </mat-cell>
+      </ng-container>
+    
+      <ng-container matColumnDef="dist">
+        <mat-header-cell *matHeaderCellDef> Dist </mat-header-cell>
+        <mat-cell *matCellDef="let element">  </mat-cell>
+      </ng-container>
+    
+      <ng-container matColumnDef="appr">
+        <mat-header-cell *matHeaderCellDef> Appr </mat-header-cell>
+        <mat-cell *matCellDef="let element">  </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="expandedDetail">
+          <mat-cell *matCellDef="let detail"> 
+            {{ detail.element.text }}
+          </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;" matRipple class="element-row" 
+        [cdkDetailRow]="row" [cdkDetailRowTpl]="tpl">
+      </mat-row>
+      
+  </table>
+</div>
+
+<ng-template #tpl let-element>
+	<div class="mat-row detail-row" [@detailExpand] style="overflow: hidden">
+		{{element.text}}
+	</div>
+</ng-template>
+    

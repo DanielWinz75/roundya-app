@@ -11,9 +11,7 @@ import {
   MatTabsModule,
   MatCheckboxModule,
   MatToolbarModule,
-  MatCard,
   MatCardModule,
-  MatFormField,
   MatFormFieldModule,
   MatProgressSpinnerModule,
   MatInputModule
@@ -23,6 +21,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatDividerModule } from '@angular/material/divider';
+import { CdkTableModule } from '@angular/cdk/table';
 
 @NgModule({
   imports: [
@@ -50,6 +49,7 @@ import { MatDividerModule } from '@angular/material/divider';
     MatPaginatorModule
   ],
   exports: [
+    CdkTableModule,
     MatTabsModule,
     MatDividerModule,
     MatSliderModule,

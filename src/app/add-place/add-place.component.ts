@@ -12,16 +12,15 @@ import { Router } from '@angular/router';
 })
 export class AddPlaceComponent implements OnInit {
   remainingChars = 300;
-
   model: any = {
     subject: 'singular',
     predicate: '',
     object: '',
     text: '',
-    owner: '',
+    ownerId: '',
     location: {
       type: 'Point',
-      coordinates: [-122.414023, 37.776023]
+      coordinates: [50.7266693, 7.0801856]
     }
   };
   error: string;
@@ -32,12 +31,10 @@ export class AddPlaceComponent implements OnInit {
   constructor(private router: Router, private configsStore: ConfigsStore, private addPlaceService: AddPlaceService) {}
 
   ngOnInit() {
-
     navigator.geolocation.getCurrentPosition(position => {
-      // this.location = position.coords;
-      console.log(position.coords);
+      this.model.location.coordinates[0] = position.coords.latitude;
+      this.model.location.coordinates[1] = position.coords.longitude;      
     });
-
     this.predicates$ = this.configsStore.getPredicates$()
     .pipe(map(preds => {
       return preds.map(pred => 'predicate.singular.' + pred);

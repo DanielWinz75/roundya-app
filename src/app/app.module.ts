@@ -16,6 +16,7 @@ import { MustMatchDirective } from './_directives/must-match.directive';
 import { AddPlaceComponent } from './add-place/add-place.component';
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import { CdkDetailRowDirective } from './list-places/cdk-detail-row.directive';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
     LoginComponent,
     SignUpComponent,
     MustMatchDirective,
-    AddPlaceComponent
+    AddPlaceComponent,
+    CdkDetailRowDirective
   ],
   imports: [
     BrowserModule,

@@ -16,7 +16,6 @@ export class SignUpComponent {
     email: ''
   };
   error: string;
-  loading: boolean;
 
   constructor(private router: Router, private signupService: SignUpService) {}
 
@@ -28,7 +27,6 @@ export class SignUpComponent {
       },
       error => {
         this.error = error;
-        this.loading = false;
       }
     );
   }
