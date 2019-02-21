@@ -28,6 +28,7 @@ export class ListPlacesComponent implements OnInit, AfterViewInit {
 
   constructor(private configsStore: ConfigsStore, private loadPlacesService: LoadPlacesService, private router: Router) {
     this.configsStore.init();
+    this.dataSource = new ListPlacesDatasource(this.loadPlacesService);    
     if (!navigator.geolocation) {
       console.log('Browser doesn\'t support geolocation.');
       const coordinates = [0, 0];
@@ -41,7 +42,6 @@ export class ListPlacesComponent implements OnInit, AfterViewInit {
   }
 
   setDataSource(coordinates: Array<number>): void {
-    this.dataSource = new ListPlacesDatasource(this.loadPlacesService);
     if (coordinates[0] === 0 && coordinates[1] === 0) {
       this.dataSource.getAllPlaces();
     } else {

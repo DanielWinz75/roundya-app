@@ -19,5 +19,6 @@
     "addplace.text" : "Your text",
     "input.error.required" : "Input is required",
     "addplace.text.length" : "{{ remainingCharacters }} characters are remaining.",
-    "button.post": "post"
+    "button.post": "post",
+    "places.whowantswhat" : "Who wants what?"
 }

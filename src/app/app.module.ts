@@ -12,11 +12,11 @@ import { HTTP_INTERCEPTORS, HttpClientModule, HttpClient } from '@angular/common
 import { JwtInterceptor } from './_utils/jwt.interceptor';
 import { ErrorInterceptor } from './_utils/error.interceptor';
 import { SignUpComponent } from './signup/signup.component';
+import { RoundyaSvgComponent } from './_svgs/roundya-svg.component';
 import { MustMatchDirective } from './_directives/must-match.directive';
 import { AddPlaceComponent } from './add-place/add-place.component';
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
-import { CdkDetailRowDirective } from './list-places/cdk-detail-row.directive';
 
 @NgModule({
   declarations: [
@@ -26,7 +26,7 @@ import { CdkDetailRowDirective } from './list-places/cdk-detail-row.directive';
     SignUpComponent,
     MustMatchDirective,
     AddPlaceComponent,
-    CdkDetailRowDirective
+    RoundyaSvgComponent
   ],
   imports: [
     BrowserModule,

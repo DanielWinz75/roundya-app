@@ -19,5 +19,6 @@
     "addplace.text" : "Dein Text",
     "input.error.required" : "Eingabe erforderlich",
     "addplace.text.length" : "Du kannst noch {{ remainingCharacters }} Zeichen eingeben.",
-    "button.post": "veröffentliche"
+    "button.post": "veröffentliche",
+    "places.whowantswhat" : "Wer will was?"
 }
