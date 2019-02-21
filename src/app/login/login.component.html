@@ -1,19 +1,33 @@
+<div class="Frame">
+  <form name="form" #f="ngForm" (ngSubmit)="login()" novalidate>
+    <mat-grid-list cols="2" rowHeight="3:1">
+      <mat-grid-tile colspan="2" md-colspan="2">
+      <app-roundya-svg [height]="50" [width]="50" [color]="'darkblue'"></app-roundya-svg>
+      <div class="RoundyaFont">Roundya</div>
+      </mat-grid-tile>
 
-<roundya-svg [height]="100" [width]="100" [pad_x]="-31" [pad_y]="-31" [zoom_height]="80" [zoom_width]="80"></roundya-svg>
+      <mat-grid-tile colspan="2" md-colspan="2">
+      <mat-form-field>
+          <input matInput placeholder="Username" name="username" type="text" #username="ngModel" [(ngModel)]="model.username" />
+      </mat-form-field>
+      </mat-grid-tile>
 
-<form name="form" #f="ngForm" (ngSubmit)="login()" novalidate>
-    <mat-form-field>
-        <input matInput placeholder="Username" name="username" type="text" #username="ngModel" [(ngModel)]="model.username" />
-    </mat-form-field>
-    <mat-form-field>
-      <input matInput placeholder="Password" name="password" type="password" #password="ngModel" [(ngModel)]="model.password" />
-    </mat-form-field> 
+      <mat-grid-tile colspan="2" md-colspan="2">
+      <mat-form-field>
+        <input matInput placeholder="Password" name="password" type="password" #password="ngModel" [(ngModel)]="model.password" />
+      </mat-form-field>
+      </mat-grid-tile>
 
-    <p><button mat-raised-button type="submit" color="primary">Login</button></p>
-</form>
+      <mat-grid-tile>
+        <button mat-raised-button type="submit" color="primary" style="margin-left: 45%;">Login</button>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <button  mat-stroked-button [routerLink]="['/signup']" color="primary" style="margin-right: 45%;">Sign Up</button>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </form>
 
-<button  mat-stroked-button [routerLink]="['/signup']" color="primary">Sign Up</button>
-
-<mat-error *ngIf="error">
+  <mat-error *ngIf="error">
     {{ error }}
-</mat-error>
+  </mat-error>
+</div>

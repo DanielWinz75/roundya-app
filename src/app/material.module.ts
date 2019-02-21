@@ -14,7 +14,8 @@ import {
   MatCardModule,
   MatFormFieldModule,
   MatProgressSpinnerModule,
-  MatInputModule
+  MatInputModule,
+  MatGridListModule
 } from '@angular/material';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatRadioModule } from '@angular/material/radio';
@@ -46,7 +47,8 @@ import { CdkTableModule } from '@angular/cdk/table';
     MatFormFieldModule,
     MatProgressSpinnerModule,
     MatInputModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatGridListModule
   ],
   exports: [
     CdkTableModule,
@@ -71,7 +73,8 @@ import { CdkTableModule } from '@angular/cdk/table';
     MatFormFieldModule,
     MatProgressSpinnerModule,
     MatInputModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatGridListModule
   ]
 })
 export class TheMaterialModule {}

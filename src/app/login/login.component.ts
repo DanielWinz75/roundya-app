@@ -5,7 +5,10 @@ import { first } from 'rxjs/operators';
 import { AuthService } from '../_services/auth.service';
 import { environment } from 'src/environments/environment';
 
-@Component({ templateUrl: 'login.component.html' })
+@Component({
+  templateUrl: 'login.component.html',
+  styleUrls: ['login.component.scss']
+})
 export class LoginComponent implements OnInit {
   model: any = {};
   loading = false;

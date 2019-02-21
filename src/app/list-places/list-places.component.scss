@@ -46,3 +46,10 @@ tr.places-element-row:not(.places-expanded-row):active {
 .places-element-description-attribution {
   opacity: 0.5;
 }
+
+.spinner-container {
+  height: 20em;
+  display: flex;
+  align-items: center;
+  justify-content: center ;
+}

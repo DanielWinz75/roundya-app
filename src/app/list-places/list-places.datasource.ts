@@ -34,7 +34,7 @@ export class ListPlacesDatasource extends DataSource<Array<any>> {
   }
 
   getNearPlaces(coordinates: Array<number>): void {
-    this.loadingSubject.next(true);    
+    this.loadingSubject.next(true);
     this.loadPlacesService.getPlacesByCoordinates$(coordinates)
       .pipe(
         catchError(() => of([])),
@@ -49,7 +49,7 @@ export class ListPlacesDatasource extends DataSource<Array<any>> {
 
   disconnect() {
     this.placesSubject.complete();
-    this.loadingSubject.complete();    
+    this.loadingSubject.complete();
   }
 }
 
