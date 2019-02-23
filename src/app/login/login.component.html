@@ -1,9 +1,13 @@
+<div class="HeaderSection">
+    <app-roundya-svg [height]="35" [width]="35" [color]="'white'"></app-roundya-svg>
+    <div class="RoundyaFont" [style.color]="'white'">Roundya</div>
+</div>
+
 <div class="Frame">
   <form name="form" #f="ngForm" (ngSubmit)="login()" novalidate>
-    <mat-grid-list cols="2" rowHeight="3:1">
+    <mat-grid-list cols="2" rowHeight="10:5">
       <mat-grid-tile colspan="2" md-colspan="2">
-      <app-roundya-svg [height]="50" [width]="50" [color]="'darkblue'"></app-roundya-svg>
-      <div class="RoundyaFont">Roundya</div>
+        Login
       </mat-grid-tile>
 
       <mat-grid-tile colspan="2" md-colspan="2">

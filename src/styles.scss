@@ -5,6 +5,27 @@
 .RoundyaFont {
   font-family: Arial, Helvetica, sans-serif;
   color: darkblue;
-  font-size: 30px;
+  font-size: 28px;
+  display: inline-block;
+  vertical-align: super;
+  margin-left: 5px;
 }
 
+.RoundyaSvg {
+  display: inline-block;
+}
+
+.mat-form-field {
+  width: 75%;
+}
+
+body, html{
+  height: 100%
+}
+body{
+  margin: 0;
+}
+
+.HeaderSection {
+  background-color: darkblue;
+}
