@@ -17,6 +17,8 @@ import { MustMatchDirective } from './_directives/must-match.directive';
 import { AddPlaceComponent } from './add-place/add-place.component';
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import { HamburgerMenuSvgComponent } from './_svgs/hamburger-menu.component';
+import { FilterMenuSvgComponent } from './_svgs/filter-menu.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
     SignUpComponent,
     MustMatchDirective,
     AddPlaceComponent,
-    RoundyaSvgComponent
+    RoundyaSvgComponent,
+    HamburgerMenuSvgComponent,
+    FilterMenuSvgComponent
   ],
   imports: [
     BrowserModule,

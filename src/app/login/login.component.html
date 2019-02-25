@@ -1,13 +1,15 @@
 <div class="HeaderSection">
-    <app-roundya-svg [height]="35" [width]="35" [color]="'white'"></app-roundya-svg>
+    <app-filter-menu [height]="32" [width]="30" [color]="'white'" class="FilterMenu"></app-filter-menu>
+    <app-roundya-svg [height]="32" [width]="32" [color]="'white'"></app-roundya-svg>
     <div class="RoundyaFont" [style.color]="'white'">Roundya</div>
+    <app-hamburger-menu [height]="32" [width]="30" [color]="'white'" class="HamburgerMenu"></app-hamburger-menu>
 </div>
 
 <div class="Frame">
   <form name="form" #f="ngForm" (ngSubmit)="login()" novalidate>
     <mat-grid-list cols="2" rowHeight="10:5">
       <mat-grid-tile colspan="2" md-colspan="2">
-        Login
+        <div class="Title">Login</div>
       </mat-grid-tile>
 
       <mat-grid-tile colspan="2" md-colspan="2">

@@ -1,4 +1,11 @@
-  <a routerLink="/add-place">add place</a>
+<div class="HeaderSection">
+    <app-filter-menu [height]="32" [width]="30" [color]="'white'" class="FilterMenu"></app-filter-menu>
+    <app-roundya-svg [height]="32" [width]="32" [color]="'white'"></app-roundya-svg>
+    <div class="RoundyaFont" [style.color]="'white'">Roundya</div>
+    <app-hamburger-menu [height]="32" [width]="30" [color]="'white'" class="HamburgerMenu"></app-hamburger-menu>
+</div>
+
+<a routerLink="/add-place">add place</a>
 
 <div class="spinner-container" *ngIf="dataSource.loading$ | async">
   <mat-spinner></mat-spinner>
@@ -10,24 +17,24 @@
 
        <ng-container matColumnDef="whoWantsToDoWhat">
         <th mat-header-cell *matHeaderCellDef>{{ 'places.whowantswhat' | translate }}</th>
-        <td mat-cell *matCellDef="let element"> 
-          {{'subject.' + element.subject | translate}} 
+        <td mat-cell *matCellDef="let element">
+          {{'subject.' + element.subject | translate}}
           {{'predicate.' + element.subject + '.' + element.predicate | translate}}
           {{element.object}}
         </td>
       </ng-container>
-    
+
       <ng-container matColumnDef="dist">
         <th mat-header-cell *matHeaderCellDef> Dist </th>
         <td mat-cell *matCellDef="let element">  </td>
       </ng-container>
-    
+
       <ng-container matColumnDef="appr">
         <th mat-header-cell *matHeaderCellDef> Appr </th>
         <td mat-cell *matCellDef="let element">  </td>
       </ng-container>
-      
-      
+
+
 
   <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
   <ng-container matColumnDef="expandedDetail">
