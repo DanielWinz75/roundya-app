@@ -1,6 +1,7 @@
 table {
   width: 100%;
   box-shadow: none !important;
+  font-family: Arial, Helvetica, sans-serif;  
 }
 
 tr.places-detail-row {
@@ -60,4 +61,66 @@ tr.places-element-row:not(.places-expanded-row):active {
 
 .FilterMenu {
   float: left;
+}
+
+.mat-header-cell:first-of-type {
+  padding-left: 2px;
+}
+
+.mat-cell:first-of-type {
+  padding-left: 2px;
+}
+
+.mat-cell:last-of-type  {
+  padding-right: 1px;
+}
+
+.mat-header-cell:last-of-type {
+  padding-right: 1px;
+}
+
+.mat-column-favicon {
+  width: 20px;
+}
+
+.mat-column-dist {
+  width: 30px;
+}
+
+.mat-column-dist {
+  width: 30px;
+}
+
+.mat-column-appr {
+  width: 30px;
+}
+
+.mat-column-time {
+  width: 30px;
+}
+
+.table-container {
+  min-height:4000px;
+}
+
+.mat-fab.mat-primary {
+  background-color: #666666;
+}
+  
+.mine{
+  position: fixed;
+  bottom: 40px;
+  right: 20px;
+}
+  
+mat-sidenav-container {
+  position: fixed;
+  height:   100%;
+  min-height: 100%;
+  width: 100%;
+  min-width: 100%;
+}
+  
+mat-sidenav {
+  width: 250px;
 }

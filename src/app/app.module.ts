@@ -17,8 +17,12 @@ import { MustMatchDirective } from './_directives/must-match.directive';
 import { AddPlaceComponent } from './add-place/add-place.component';
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
-import { HamburgerMenuSvgComponent } from './_svgs/hamburger-menu.component';
-import { FilterMenuSvgComponent } from './_svgs/filter-menu.component';
+import { HamburgerMenuSvgComponent } from './_svgs/hamburger-menu-svg.component';
+import { FilterMenuSvgComponent } from './_svgs/filter-menu-svg.component';
+import { CrowdSvgComponent } from './_svgs/crowd-svg.component';
+import { LocationSvgComponent } from './_svgs/location-svg.component';
+import { GetDuckDuckGoIcoUrl } from './_pipes/get-duckduckgo-ico-url.pipe';
+import { ClockSvgComponent } from './_svgs/clock-svg.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +34,11 @@ import { FilterMenuSvgComponent } from './_svgs/filter-menu.component';
     AddPlaceComponent,
     RoundyaSvgComponent,
     HamburgerMenuSvgComponent,
-    FilterMenuSvgComponent
+    FilterMenuSvgComponent,
+    CrowdSvgComponent,
+    LocationSvgComponent,
+    ClockSvgComponent,
+    GetDuckDuckGoIcoUrl    
   ],
   imports: [
     BrowserModule,

@@ -15,7 +15,8 @@ import {
   MatFormFieldModule,
   MatProgressSpinnerModule,
   MatInputModule,
-  MatGridListModule
+  MatGridListModule,
+  MatSidenavModule
 } from '@angular/material';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatRadioModule } from '@angular/material/radio';
@@ -38,6 +39,7 @@ import { CdkTableModule } from '@angular/cdk/table';
     MatDialogModule,
     MatProgressSpinnerModule,
     MatButtonModule,
+    MatSidenavModule,    
     MatSortModule,
     MatTableModule,
     MatTabsModule,
@@ -64,6 +66,7 @@ import { CdkTableModule } from '@angular/cdk/table';
     MatDialogModule,
     MatProgressSpinnerModule,
     MatButtonModule,
+    MatSidenavModule,    
     MatSortModule,
     MatCheckboxModule,
     MatToolbarModule,

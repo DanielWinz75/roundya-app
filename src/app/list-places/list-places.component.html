@@ -1,58 +1,85 @@
-<div class="HeaderSection">
-    <app-filter-menu [height]="32" [width]="30" [color]="'white'" class="FilterMenu"></app-filter-menu>
-    <app-roundya-svg [height]="32" [width]="32" [color]="'white'"></app-roundya-svg>
-    <div class="RoundyaFont" [style.color]="'white'">Roundya</div>
-    <app-hamburger-menu [height]="32" [width]="30" [color]="'white'" class="HamburgerMenu"></app-hamburger-menu>
-</div>
+<mat-sidenav-container>
+  <div class="HeaderSection">
+      <app-filter-menu [height]="32" [width]="30" [color]="'white'" class="FilterMenu"></app-filter-menu>
+      <app-roundya-svg [height]="32" [width]="32" [color]="'white'"></app-roundya-svg>
+      <div class="RoundyaFont" [style.color]="'white'">Roundya</div>
+      <app-hamburger-menu [height]="32" [width]="30" [color]="'white'" class="HamburgerMenu"></app-hamburger-menu>
+  </div>
 
-<a routerLink="/add-place">add place</a>
+  <div class="spinner-container" *ngIf="dataSource.loading$ | async">
+    <mat-spinner></mat-spinner>
+  </div>
 
-<div class="spinner-container" *ngIf="dataSource.loading$ | async">
-  <mat-spinner></mat-spinner>
-</div>
+  <mat-sidenav #sidenav>
+    <p>side nav works</p>
+  </mat-sidenav>
 
-<table mat-table
-       [dataSource]="dataSource" multiTemplateDataRows
-       class="mat-elevation-z8">
+  <div class="table-container">
+    <button class="mine" mat-fab color="primary" (click)="this.router.navigate(['/add-place']);">
+      <span style="font-size: 2em;">+</span>
+    </button>
 
-       <ng-container matColumnDef="whoWantsToDoWhat">
-        <th mat-header-cell *matHeaderCellDef>{{ 'places.whowantswhat' | translate }}</th>
-        <td mat-cell *matCellDef="let element">
-          {{'subject.' + element.subject | translate}}
-          {{'predicate.' + element.subject + '.' + element.predicate | translate}}
-          {{element.object}}
+    <table mat-table
+          [dataSource]="dataSource" multiTemplateDataRows
+          class="mat-elevation-z8">
+
+          <ng-container matColumnDef="favicon">
+              <th mat-header-cell *matHeaderCellDef></th>
+              <td mat-cell *matCellDef="let element">
+                <img *ngIf="element.url" src="{{ element.url | getDuckDuckGoIcoUrl }}" width="13" height="13" style="padding-top: 2px;" />
+              </td>
+          </ng-container>
+
+          <ng-container matColumnDef="whoWantsToDoWhat">
+            <th mat-header-cell *matHeaderCellDef>{{ 'places.whowantswhat' | translate }}</th>
+            <td mat-cell *matCellDef="let element">
+              {{'subject.' + element.subject | translate}}
+              {{'predicate.' + element.subject + '.' + element.predicate | translate}}
+              {{element.object}}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="time">
+            <th mat-header-cell *matHeaderCellDef>
+              <app-clock-svg [height]="38" [width]="30" [color]="'#666666'"></app-clock-svg>
+            </th>
+            <td mat-cell *matCellDef="let element">  </td>
+          </ng-container>
+
+          <ng-container matColumnDef="appr">
+            <th mat-header-cell *matHeaderCellDef>
+              <app-crowd-svg [height]="35" [width]="30" [color]="'#666666'"></app-crowd-svg>
+            </th>        
+            <td mat-cell *matCellDef="let element">  </td>
+          </ng-container>
+
+          <ng-container matColumnDef="dist">
+            <th mat-header-cell *matHeaderCellDef>
+              <app-location-svg [height]="32" [width]="30" [color]="'#666666'"></app-location-svg>
+            </th>
+            <td mat-cell *matCellDef="let element">  </td>
+          </ng-container>
+
+      <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
+      <ng-container matColumnDef="expandedDetail">
+        <td mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length">
+          <div class="places-element-detail"
+              [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+            <div class="places-element-diagram">
+              {{element.text}}
+            </div>
+          </div>
         </td>
       </ng-container>
 
-      <ng-container matColumnDef="dist">
-        <th mat-header-cell *matHeaderCellDef> Dist </th>
-        <td mat-cell *matCellDef="let element">  </td>
-      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let element; columns: displayedColumns;"
+          class="places-element-row"
+          [class.places-expanded-row]="expandedElement === element"
+          (click)="expandedElement = expandedElement === element ? null : element">
+      </tr>
+      <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="places-detail-row"></tr>
+    </table>
+  </div>
 
-      <ng-container matColumnDef="appr">
-        <th mat-header-cell *matHeaderCellDef> Appr </th>
-        <td mat-cell *matCellDef="let element">  </td>
-      </ng-container>
-
-
-
-  <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
-  <ng-container matColumnDef="expandedDetail">
-    <td mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length">
-      <div class="places-element-detail"
-           [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
-        <div class="places-element-diagram">
-          {{element.text}}
-        </div>
-      </div>
-    </td>
-  </ng-container>
-
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let element; columns: displayedColumns;"
-      class="places-element-row"
-      [class.places-expanded-row]="expandedElement === element"
-      (click)="expandedElement = expandedElement === element ? null : element">
-  </tr>
-  <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="places-detail-row"></tr>
-</table>
+</mat-sidenav-container>

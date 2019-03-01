@@ -18,6 +18,7 @@ export class AddPlaceComponent implements OnInit {
     object: '',
     text: '',
     ownerId: '',
+    url: '',
     location: {
       type: 'Point',
       coordinates: [0, 0]

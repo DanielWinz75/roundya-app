@@ -19,12 +19,10 @@ import { Subject } from 'rxjs';
   ],
 })
 export class ListPlacesComponent implements OnInit, AfterViewInit {
-  displayedColumns = ['whoWantsToDoWhat', 'dist', 'appr'];
+  displayedColumns = ['favicon','whoWantsToDoWhat','time', 'appr','dist'];
   dataSource: ListPlacesDatasource;
-  error: string;
-  coordinatesSubject: Subject<Array<number>> = new Subject();
 
-  isExpansionDetailRow = (i: number, row: Object) => row.hasOwnProperty('detailRow');
+  logo = 'https://proxy.duckduckgo.com/ip3/www.bmw.de.ico';
 
   constructor(private configsStore: ConfigsStore, private loadPlacesService: LoadPlacesService, private router: Router) {
     this.configsStore.init();

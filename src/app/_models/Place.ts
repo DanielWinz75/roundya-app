@@ -5,6 +5,7 @@ export class Place {
     object: '';
     text: '';
     ownerId: '';
+    url: '';
     location: {
       type: 'Point';
       coordinates: [number, number];

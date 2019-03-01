@@ -9,7 +9,7 @@
   <form name="form" #f="ngForm" (ngSubmit)="login()" novalidate>
     <mat-grid-list cols="2" rowHeight="10:5">
       <mat-grid-tile colspan="2" md-colspan="2">
-        <div class="Title">Login</div>
+        <div class="Title">{{ 'login.title' | translate }}</div>
       </mat-grid-tile>
 
       <mat-grid-tile colspan="2" md-colspan="2">
