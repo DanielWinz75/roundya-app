@@ -19,7 +19,7 @@ import { Subject } from 'rxjs';
   ],
 })
 export class ListPlacesComponent implements OnInit, AfterViewInit {
-  displayedColumns = ['favicon','whoWantsToDoWhat','time', 'appr','dist'];
+  displayedColumns = ['favicon', 'whoWantsToDoWhat', 'time', 'dist'];
   dataSource: ListPlacesDatasource;
 
   logo = 'https://proxy.duckduckgo.com/ip3/www.bmw.de.ico';

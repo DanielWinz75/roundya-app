@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, PipeTransform } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -23,6 +23,7 @@ import { CrowdSvgComponent } from './_svgs/crowd-svg.component';
 import { LocationSvgComponent } from './_svgs/location-svg.component';
 import { GetDuckDuckGoIcoUrl } from './_pipes/get-duckduckgo-ico-url.pipe';
 import { ClockSvgComponent } from './_svgs/clock-svg.component';
+import { DistMetric } from './_pipes/distance-metric.pipe';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { ClockSvgComponent } from './_svgs/clock-svg.component';
     CrowdSvgComponent,
     LocationSvgComponent,
     ClockSvgComponent,
-    GetDuckDuckGoIcoUrl    
+    GetDuckDuckGoIcoUrl,
+    DistMetric
   ],
   imports: [
     BrowserModule,
