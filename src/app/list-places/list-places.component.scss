@@ -64,34 +64,32 @@ tr.places-element-row:not(.places-expanded-row):active {
 }
 
 .mat-header-cell:first-of-type {
-  padding-left: 2px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 .mat-cell:first-of-type {
-  padding-left: 2px;
+  padding-left: 5px;
+  padding-right: 5px;  
 }
 
 .mat-cell:last-of-type  {
-  padding-right: 1px;
+  padding-right: 5px;
 }
 
 .mat-header-cell:last-of-type {
-  padding-right: 1px;
+  padding-right: 5px;
 }
 
 .mat-column-favicon {
   width: 20px;
 }
 
-.mat-column-dist {
-  width: 30px;
+.mat-column-whoWantsToDoWhat {
+  width: auto;
 }
 
 .mat-column-dist {
-  width: 30px;
-}
-
-.mat-column-appr {
   width: 30px;
 }
 

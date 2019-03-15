@@ -1,6 +1,7 @@
 export class Place {
     _id?: string;
-    subject: 'singular';
+    expires : '';
+    subject: '';
     predicate: '';
     object: '';
     text: '';

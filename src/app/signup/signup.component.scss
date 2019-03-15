@@ -1,11 +1,17 @@
-.Frame {
-  margin-top: 20px;
+.FormElement {
+  margin: 5px auto;
+  width: 75%;
 }
 
-.HamburgerMenu {
-  float: right;
+.ArrangeRoundButtons {
+  width: 90px;
+  margin: 15px auto;  
 }
 
-.FilterMenu {
-  float: left;
+form {
+  position: relative; 
+  top:10px;
+  left:0;  
+  width:100%;
+  height:100%;  
 }

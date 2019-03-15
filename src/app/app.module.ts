@@ -24,6 +24,8 @@ import { LocationSvgComponent } from './_svgs/location-svg.component';
 import { GetDuckDuckGoIcoUrl } from './_pipes/get-duckduckgo-ico-url.pipe';
 import { ClockSvgComponent } from './_svgs/clock-svg.component';
 import { DistMetric } from './_pipes/distance-metric.pipe';
+import {DatePipe} from '@angular/common';
+import { FilterPlacesComponent } from './filter-places/filter-places.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,8 @@ import { DistMetric } from './_pipes/distance-metric.pipe';
     LocationSvgComponent,
     ClockSvgComponent,
     GetDuckDuckGoIcoUrl,
-    DistMetric
+    DistMetric,
+    FilterPlacesComponent
   ],
   imports: [
     BrowserModule,
@@ -59,7 +62,8 @@ import { DistMetric } from './_pipes/distance-metric.pipe';
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    DatePipe
   ],
   bootstrap: [AppComponent]
 })

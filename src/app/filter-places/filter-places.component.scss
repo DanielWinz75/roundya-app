@@ -1,0 +1,33 @@
+.Element {
+    margin: 5px auto;
+    width: 75%;
+    padding-top: 10px;
+  }
+
+  .Frame {
+    position: relative; 
+    top: 20px;
+    left:0;  
+    width:100%;
+    height:100%;  
+  }
+
+  .ArrangeSlider {
+    margin-top: 10px;
+    margin-bottom: 5px;
+  }
+
+  .mat-fab.mat-primary {
+    background-color: #666666;
+  }
+  
+  .mat-slider-horizontal {
+    height: 48px;
+    min-width: 100%;
+  }
+
+  .ArrangeRoundButtons {
+    width: 56px;
+    margin: 15px auto;  
+  }
+  

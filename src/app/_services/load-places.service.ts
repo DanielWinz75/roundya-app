@@ -8,7 +8,8 @@ import { Place } from '../_models/Place';
 @Injectable({ providedIn: 'root' })
 export class LoadPlacesService {
   requestorLocation: Place = {
-    subject: 'singular',
+    expires: '',
+    subject: '',
     predicate: '',
     object: '',
     text: '',

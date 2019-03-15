@@ -1,0 +1,53 @@
+<div class="HeaderSection">
+    <a routerLink="/places">
+        <mat-icon [style.color]="'white'" class="HeadLeftMenu MatFont">arrow_back_ios</mat-icon>
+    </a>
+    <div class="HeadRightMenu"></div>
+    <div class="HeadCenterMenu">
+        <app-roundya-svg [height]="25" [width]="25" [color]="'white'" class="HeadRoundyaIcon"></app-roundya-svg>
+        <div class="RoundyaFont" [style.color]="'white'">Roundya</div>
+    </div>
+</div>
+
+
+<div class="Frame">
+
+    <div class="Title FormElement">{{ 'filterplaces.title' | translate }}</div>
+
+    <div class="Element">
+        <div class="ArrangeSlider">
+            <div>
+                {{ 'filterplaces.distance' | translate }}: {{ distance }}
+            </div>
+
+            <div>
+                <mat-slider
+                min="0"
+                max="10000"
+                #matslider
+                (input)="pitch($event)"></mat-slider>
+            </div>
+        </div>
+    </div>
+
+    <div class="Element">
+        
+        <mat-form-field>
+                <mat-select placeholder="{{ 'filterplaces.domain' | translate }}">
+                  <mat-option *ngFor="let domain of domains" [value]="domain">
+                    {{domain}}
+                  </mat-option>
+                </mat-select>
+        </mat-form-field>
+
+    </div>
+
+    <div class="Element">
+        <div class="ArrangeRoundButtons">
+            <button class="mine" mat-fab color="primary" type="submit">
+                <mat-icon [style.color]="'white'" class="HeadRightMenu MatFont">check</mat-icon>
+            </button>      
+        </div>
+    </div>    
+    
+</div>

@@ -1,22 +1,16 @@
 <div class="HeaderSection">
-    <app-filter-menu [height]="32" [width]="30" [color]="'white'" class="FilterMenu"></app-filter-menu>
-    <app-roundya-svg [height]="32" [width]="32" [color]="'white'"></app-roundya-svg>
-    <div class="RoundyaFont" [style.color]="'white'">Roundya</div>
-    <app-hamburger-menu [height]="32" [width]="30" [color]="'white'" class="HamburgerMenu"></app-hamburger-menu>
+  <app-roundya-svg [height]="25" [width]="25" [color]="'white'" class="HeadRoundyaIcon"></app-roundya-svg>
+  <div class="RoundyaFont" [style.color]="'white'">Roundya</div>
 </div>
-
-<div class="Frame">
 
   <form name="form" #f="ngForm"
     (ngSubmit)="f.form.valid && onSubmit()"
     [appMustMatch]="['password', 'confirmPassword']"
     novalidate>
 
-    <mat-grid-list cols="2" rowHeight="10:5">
-      <mat-grid-tile colspan="2" md-colspan="2">
-        <div class="Title">SignUp</div>
-      </mat-grid-tile>
-      <mat-grid-tile colspan="2" md-colspan="2">
+        <div class="Title FormElement">SignUp</div>
+
+        <div class="FormElement">
         <mat-form-field>
           <input name="username" matInput placeholder="Username" type="text"
             #username="ngModel"
@@ -29,9 +23,9 @@
             <mat-error *ngIf="username.errors.minlength">Min length {{ minLengthUsername }} characters</mat-error>
           </div>
         </mat-form-field>
-      </mat-grid-tile>
+      </div>
 
-      <mat-grid-tile colspan="2" md-colspan="2">
+        <div class="FormElement">
         <mat-form-field>
           <input name="password" matInput placeholder="Password" type="password"
             #password="ngModel"
@@ -44,9 +38,9 @@
               <mat-error *ngIf="password.errors.minlength">Min length 12 characters</mat-error>
           </div>
         </mat-form-field>
-      </mat-grid-tile>
+      </div>
 
-      <mat-grid-tile colspan="2" md-colspan="2">
+        <div class="FormElement">
         <mat-form-field>
           <input name="confirmPassword" matInput placeholder="Confirm password" type="password"
             #confirmPassword="ngModel"
@@ -59,9 +53,9 @@
             <mat-error *ngIf="confirmPassword.errors.mustMatch">Confirmation must match password</mat-error>
           </div>
         </mat-form-field>
-      </mat-grid-tile>
+      </div>
 
-      <mat-grid-tile colspan="2" md-colspan="2">
+        <div class="FormElement">
         <mat-form-field>
           <input name="email" matInput placeholder="Email" type="text"
             #email="ngModel"
@@ -74,16 +68,19 @@
             <mat-error *ngIf="email.errors.pattern">Please enter valid email addreass</mat-error>
           </div>
         </mat-form-field>
-      </mat-grid-tile>
+      </div>
 
-      <mat-grid-tile colspan="2" md-colspan="2">
-        <button  mat-raised-button type="submit" color="primary">Sign Up</button>
-      </mat-grid-tile>
+        <div class="FormElement">
+        <div class="ArrangeRoundButtons">          
+          <button  mat-raised-button type="submit" color="primary">Sign Up</button>
+        </div>
+        </div>
+
 
       <mat-error *ngIf="error">
           {{ error }}
       </mat-error>
-    </mat-grid-list>
+
   </form>
-</div>
+
 

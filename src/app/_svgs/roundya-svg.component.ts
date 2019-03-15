@@ -2,8 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
     selector: 'app-roundya-svg',
-    templateUrl: 'roundya-svg.component.html',
-    styleUrls: ['roundya-svg.component.scss']
+    templateUrl: 'roundya-svg.component.html'
 })
 export class RoundyaSvgComponent {
 

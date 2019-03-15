@@ -4,7 +4,6 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 import { LoadPlacesService } from '../_services/load-places.service';
 import { Router } from '@angular/router';
 import { ListPlacesDatasource } from './list-places.datasource';
-import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-list-places',

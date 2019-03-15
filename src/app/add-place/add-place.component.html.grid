@@ -1,27 +1,23 @@
 <div class="HeaderSection">
-    <a routerLink="/places">
-        <mat-icon [style.color]="'white'" class="HeadLeftMenu MatFont">arrow_back_ios</mat-icon>
-    </a>
-    <div class="HeadRightMenu"></div>
-    <div class="HeadCenterMenu">
-        <app-roundya-svg [height]="25" [width]="25" [color]="'white'" class="HeadRoundyaIcon"></app-roundya-svg>
-        <div class="RoundyaFont" [style.color]="'white'">Roundya</div>
-    </div>
+    <app-filter-menu [height]="22" [width]="23" [color]="'white'" class="HeadLeftMenu"></app-filter-menu>
+    <app-roundya-svg [height]="25" [width]="25" [color]="'white'" class="HeadRoundyaIcon"></app-roundya-svg>
+    <div class="RoundyaFont" [style.color]="'white'">Roundya</div>
+    <mat-icon [style.color]="'white'" class="HeadRightMenu MatFont">close</mat-icon>
 </div>
 
-
+<div class="Frame">
   <form name="form"
     #f="ngForm"
     (ngSubmit)="f.form.valid && onSubmit()"
     novalidate>
 
-    <div class="Outer">
+    <mat-grid-list cols="2" rowHeight="10:5">
 
+      <mat-grid-tile colspan="2" md-colspan="2">
+        <div class="Title">{{ 'addplace.title' | translate }}</div>
+      </mat-grid-tile>
 
-        <div class="Title FormElement">{{ 'addplace.title' | translate }}</div>
-
-
-        <div class="FormElement">
+      <mat-grid-tile colspan="2" md-colspan="2">
         <mat-form-field>
           <mat-select matInput placeholder="{{ 'addplace.subject' | translate }}" name="subject"
             #subject="ngModel"
@@ -36,9 +32,9 @@
             </mat-option>    
           </mat-select>
         </mat-form-field>
-        </div>
+      </mat-grid-tile>
 
-        <div class="FormElement">
+      <mat-grid-tile colspan="2" md-colspan="2">
         <mat-form-field>
           <mat-select matInput placeholder="{{ 'addplace.predicate' | translate }}" name="predicate"
             #predicate="ngModel"
@@ -49,21 +45,21 @@
             </mat-option>
           </mat-select>
         </mat-form-field>
-        </div>
+      </mat-grid-tile>
 
-        <div class="FormElement">
+      <mat-grid-tile colspan="2" md-colspan="2">
         <mat-form-field>
           <input name="object" matInput placeholder="{{ 'addplace.object' | translate }}" type="text"
             #object="ngModel"
             [(ngModel)]="model.object"
             required />
           <div *ngIf="f.submitted && object.invalid">
-            <mat-error *ngIf="object.errors.required">{{ 'input.error.required' | translate }}</mat-error>
+            <mat-error *ngIf="object.errors.required">{{ input.error.required }}</mat-error>
           </div>
         </mat-form-field>
-        </div>
+      </mat-grid-tile>
 
-        <div class="FormElement">
+      <mat-grid-tile colspan="2" md-colspan="2">
         <mat-form-field>
           <textarea name="text" matInput placeholder="{{ 'addplace.text' | translate }}"
             (input)="doTextAreaChange($event)"
@@ -73,9 +69,9 @@
           </textarea>
           <mat-hint align="end">{{ 'addplace.text.length' | translate:{remainingCharacters: remainingChars} }}</mat-hint>
         </mat-form-field>
-        </div>
+      </mat-grid-tile>
 
-        <div class="FormElement">
+      <mat-grid-tile colspan="2" md-colspan="2">
           <mat-form-field>
             <input name="url" matInput placeholder="{{ 'addplace.url' | translate }}" type="text"
               #url="ngModel"
@@ -85,37 +81,30 @@
               <mat-error *ngIf="url.errors.pattern">{{ 'addplace.error.url.invalid' | translate }}</mat-error>
             </div>                
           </mat-form-field>
-        </div>
+      </mat-grid-tile>      
 
-
-        <div class="FormElement">
-          <div class="ArrangeSlider">
-          <div>
-          {{ 'addplace.duration' | translate }}: {{ duration }}
-          </div>
-
-          <div>
+      <mat-grid-tile colspan="2" md-colspan="2">
+        {{ 'addplace.distance' | translate }}: {{ distance }}
+      </mat-grid-tile>  
+      <mat-grid-tile colspan="2" md-colspan="2">
           <mat-slider
+          step="10"
           min="1"
-          max="3"
+          max="10000"
           #matslider
           (input)="pitch($event)"></mat-slider>
-          </div>
-          </div>
-        </div>
+      </mat-grid-tile>
 
-        <div class="FormElement">
-        <div class="ArrangeRoundButtons">
+      <mat-grid-tile colspan="2" md-colspan="2">
         <button class="mine" mat-fab color="primary" type="submit">
           <mat-icon [style.color]="'white'" class="HeadRightMenu MatFont">check</mat-icon>
         </button>      
-        </div>
-        </div>
+      </mat-grid-tile>
 
-      </div>
-      
+    </mat-grid-list>
     <mat-error *ngIf="error">
         {{ error }}
     </mat-error>
 
   </form>
+</div>

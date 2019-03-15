@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { ConfigsStore } from '../_stores/configs.store';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { AddPlaceService } from '../_services/add-place.service';
 import { Router } from '@angular/router';
+import {DatePipe} from '@angular/common';
 
 @Component({
   selector: 'app-add-place',
@@ -12,8 +13,12 @@ import { Router } from '@angular/router';
 })
 export class AddPlaceComponent implements OnInit {
   remainingChars = 300;
+
+  duration = '1h';
+
   model: any = {
-    subject: 'singular',
+    expires : '',
+    subject: '',
     predicate: '',
     object: '',
     text: '',
@@ -29,7 +34,16 @@ export class AddPlaceComponent implements OnInit {
 
   predicates$: Observable<Array<string>>;
 
-  constructor(private router: Router, private configsStore: ConfigsStore, private addPlaceService: AddPlaceService) {}
+  constructor(
+    private router: Router, 
+    private configsStore: ConfigsStore, 
+    private addPlaceService: AddPlaceService, 
+    private datePipe: DatePipe) {
+
+      // set default - initially 1 hour 
+      let expTimeMillis = new Date().valueOf() + 1000*3600;
+      this.model.expirationDate = this.datePipe.transform(expTimeMillis, "yyyy-MM-dd'T'HH:mm:ssZ");
+    }
 
   ngOnInit() {
     navigator.geolocation.getCurrentPosition(position => {
@@ -70,4 +84,28 @@ export class AddPlaceComponent implements OnInit {
   doTextAreaChange(e) {
     this.remainingChars = 300 - e.target.value.length;
   }
+
+  pitch(event: any) {
+    let duration;
+
+    if (!event.value) {
+      return 0;
+    }
+
+    let expTimeMillis = new Date().valueOf() + 1000*3600*event.value; // current date + value in millies
+    this.model.expires = this.datePipe.transform(expTimeMillis, "yyyy-MM-dd'T'HH:mm:ssZ");
+
+    console.log(this.model.expires);
+
+    if (event.value < 24) {
+      duration = event.value + 'h';
+    }
+    if (event.value >= 24) {
+      duration = Math.round(event.value / 24) + 'd';
+    }
+
+
+    this.duration = duration;
+  }
+ 
 }

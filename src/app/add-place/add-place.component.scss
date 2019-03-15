@@ -2,10 +2,34 @@
   margin-top: 20px;
 }
 
-.HamburgerMenu {
-  float: right;
+.mat-fab.mat-primary {
+  background-color: #666666;
 }
 
-.FilterMenu {
-  float: left;
+.mat-slider-horizontal {
+  height: 48px;
+  min-width: 100%;
+}
+
+.FormElement {
+  margin: 5px auto;
+  width: 75%;
+}
+
+.ArrangeRoundButtons {
+  width: 56px;
+  margin: 15px auto;  
+}
+
+.ArrangeSlider {
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+form {
+  position: relative; 
+  top:10px;
+  left:0;  
+  width:100%;
+  height:100%;  
 }

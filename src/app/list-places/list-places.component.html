@@ -1,13 +1,17 @@
-  <div class="HeaderSection">
-      <app-filter-menu [height]="32" [width]="30" [color]="'white'" class="FilterMenu"></app-filter-menu>
-      <app-roundya-svg [height]="32" [width]="32" [color]="'white'"></app-roundya-svg>
-      <div class="RoundyaFont" [style.color]="'white'">Roundya</div>
-      <app-hamburger-menu [height]="32" [width]="30" [color]="'white'" class="HamburgerMenu"></app-hamburger-menu>
-  </div>
+<div class="HeaderSection">
+    <a routerLink="/filter-places">
+      <app-filter-menu [height]="22" [width]="23" [color]="'white'" class="HeadLeftMenu"></app-filter-menu>
+    </a>      
+    <app-hamburger-menu [height]="22" [width]="23" [color]="'white'" class="HeadRightMenu"></app-hamburger-menu>
+    <div class="HeadCenterMenu">
+        <app-roundya-svg [height]="25" [width]="25" [color]="'white'" class="HeadRoundyaIcon"></app-roundya-svg>
+        <div class="RoundyaFont" [style.color]="'white'">Roundya</div>
+    </div>    
+</div>
 
   <div class="table-container">
     <button class="mine" mat-fab color="primary" (click)="this.router.navigate(['/add-place']);">
-      <span style="font-size: 2em;">+</span>
+      <span style="font-size: 2em; color: white;">+</span>
     </button>
 
     <table mat-table
@@ -17,7 +21,7 @@
           <ng-container matColumnDef="favicon">
               <th mat-header-cell *matHeaderCellDef></th>
               <td mat-cell *matCellDef="let element">
-                <img *ngIf="element.content.url" src="{{ element.content.url | getDuckDuckGoIcoUrl }}" width="13" height="13" style="padding-top: 2px;" />
+                <img *ngIf="element.content.url" src="{{ element.content.url | getDuckDuckGoIcoUrl }}" width="18" height="18" style="padding-top: 2px;" />
               </td>
           </ng-container>
 
