@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { AddPlaceService } from '../_services/add-place.service';
 import { Router } from '@angular/router';
-import {DatePipe} from '@angular/common';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-add-place',
@@ -35,14 +35,14 @@ export class AddPlaceComponent implements OnInit {
   predicates$: Observable<Array<string>>;
 
   constructor(
-    private router: Router, 
-    private configsStore: ConfigsStore, 
-    private addPlaceService: AddPlaceService, 
+    private router: Router,
+    private configsStore: ConfigsStore,
+    private addPlaceService: AddPlaceService,
     private datePipe: DatePipe) {
 
-      // set default - initially 1 hour 
-      let expTimeMillis = new Date().valueOf() + 1000*3600;
-      this.model.expirationDate = this.datePipe.transform(expTimeMillis, "yyyy-MM-dd'T'HH:mm:ssZ");
+      // set default - initially 1 hour
+      const expTimeMillis = new Date().valueOf() + 1000 * 3600;
+      this.model.expires = this.datePipe.transform(expTimeMillis, 'yyyy-MM-dd\'T\'HH:mm:ssZ');
     }
 
   ngOnInit() {
@@ -92,8 +92,8 @@ export class AddPlaceComponent implements OnInit {
       return 0;
     }
 
-    let expTimeMillis = new Date().valueOf() + 1000*3600*event.value; // current date + value in millies
-    this.model.expires = this.datePipe.transform(expTimeMillis, "yyyy-MM-dd'T'HH:mm:ssZ");
+    const expTimeMillis = new Date().valueOf() + 1000 * 3600 * event.value; // current date + value in millies
+    this.model.expires = this.datePipe.transform(expTimeMillis, 'yyyy-MM-dd\'T\'HH:mm:ssZ');
 
     console.log(this.model.expires);
 
@@ -107,5 +107,5 @@ export class AddPlaceComponent implements OnInit {
 
     this.duration = duration;
   }
- 
+
 }

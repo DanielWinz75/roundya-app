@@ -24,8 +24,10 @@ import { LocationSvgComponent } from './_svgs/location-svg.component';
 import { GetDuckDuckGoIcoUrl } from './_pipes/get-duckduckgo-ico-url.pipe';
 import { ClockSvgComponent } from './_svgs/clock-svg.component';
 import { DistMetric } from './_pipes/distance-metric.pipe';
-import {DatePipe} from '@angular/common';
+import { DatePipe } from '@angular/common';
 import { FilterPlacesComponent } from './filter-places/filter-places.component';
+import { TimeLeftPipe } from './_pipes/time-left.pipe';
+import { FakeAmountPipe } from './_pipes/fake-amount.pipe';
 
 @NgModule({
   declarations: [
@@ -43,6 +45,8 @@ import { FilterPlacesComponent } from './filter-places/filter-places.component';
     ClockSvgComponent,
     GetDuckDuckGoIcoUrl,
     DistMetric,
+    TimeLeftPipe,
+    FakeAmountPipe,
     FilterPlacesComponent
   ],
   imports: [

@@ -64,13 +64,13 @@ tr.places-element-row:not(.places-expanded-row):active {
 }
 
 .mat-header-cell:first-of-type {
-  padding-left: 5px;
+  padding-left: 10px;
   padding-right: 5px;
 }
 
 .mat-cell:first-of-type {
-  padding-left: 5px;
-  padding-right: 5px;  
+  padding-left: 10px;
+  padding-right: 5px;
 }
 
 .mat-cell:last-of-type  {
@@ -87,6 +87,7 @@ tr.places-element-row:not(.places-expanded-row):active {
 
 .mat-column-whoWantsToDoWhat {
   width: auto;
+  padding-left: 15px;
 }
 
 .mat-column-dist {

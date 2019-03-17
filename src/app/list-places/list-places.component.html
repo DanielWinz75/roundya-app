@@ -1,12 +1,12 @@
 <div class="HeaderSection">
     <a routerLink="/filter-places">
       <app-filter-menu [height]="22" [width]="23" [color]="'white'" class="HeadLeftMenu"></app-filter-menu>
-    </a>      
+    </a>
     <app-hamburger-menu [height]="22" [width]="23" [color]="'white'" class="HeadRightMenu"></app-hamburger-menu>
     <div class="HeadCenterMenu">
         <app-roundya-svg [height]="25" [width]="25" [color]="'white'" class="HeadRoundyaIcon"></app-roundya-svg>
         <div class="RoundyaFont" [style.color]="'white'">Roundya</div>
-    </div>    
+    </div>
 </div>
 
   <div class="table-container">
@@ -21,7 +21,7 @@
           <ng-container matColumnDef="favicon">
               <th mat-header-cell *matHeaderCellDef></th>
               <td mat-cell *matCellDef="let element">
-                <img *ngIf="element.content.url" src="{{ element.content.url | getDuckDuckGoIcoUrl }}" width="18" height="18" style="padding-top: 2px;" />
+                <img *ngIf="element.content.url" src="{{ element.content.url | getDuckDuckGoIcoUrl }}" width="25" height="25" style="padding-top: 2px;" />
               </td>
           </ng-container>
 
@@ -29,24 +29,24 @@
             <th mat-header-cell *matHeaderCellDef>{{ 'places.whowantswhat' | translate }}</th>
             <td mat-cell *matCellDef="let element">
               {{'subject.' + element.content.subject | translate}}
-              {{'predicate.' + element.content.subject + '.' + element.content.predicate | translate}}
+              {{'predicate.' + element.content.subject + '.' + element.content.predicate | translate}}<br>
               {{element.content.object}}
             </td>
           </ng-container>
 
-          <ng-container matColumnDef="time">
+          <ng-container matColumnDef="expires">
             <th mat-header-cell *matHeaderCellDef>
               <app-clock-svg [height]="38" [width]="30" [color]="'#666666'"></app-clock-svg>
             </th>
-            <td mat-cell *matCellDef="let element">  </td>
+            <td mat-cell *matCellDef="let element">{{ element.content.expires | timeleft }}</td>
           </ng-container>
 
-          <!-- <ng-container matColumnDef="appr">
+          <ng-container matColumnDef="approaching">
             <th mat-header-cell *matHeaderCellDef>
               <app-crowd-svg [height]="35" [width]="30" [color]="'#666666'"></app-crowd-svg>
             </th>
-            <td mat-cell *matCellDef="let element">  </td>
-          </ng-container> -->
+            <td mat-cell *matCellDef="let element">{{ '' | fakeamount }}</td>
+          </ng-container>
 
           <ng-container matColumnDef="dist">
             <th mat-header-cell *matHeaderCellDef>

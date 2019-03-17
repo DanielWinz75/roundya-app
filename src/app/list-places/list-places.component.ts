@@ -18,7 +18,7 @@ import { ListPlacesDatasource } from './list-places.datasource';
   ],
 })
 export class ListPlacesComponent implements OnInit, AfterViewInit {
-  displayedColumns = ['favicon', 'whoWantsToDoWhat', 'time', 'dist'];
+  displayedColumns = ['favicon', 'whoWantsToDoWhat', 'approaching', 'expires', 'dist'];
   dataSource: ListPlacesDatasource;
 
   logo = 'https://proxy.duckduckgo.com/ip3/www.bmw.de.ico';
