@@ -43,7 +43,8 @@
 
           <ng-container matColumnDef="approaching">
             <th mat-header-cell *matHeaderCellDef>
-              <app-crowd-svg [height]="35" [width]="30" [color]="'#666666'"></app-crowd-svg>
+              <!-- <app-crowd-svg [height]="35" [width]="30" [color]="'#666666'"></app-crowd-svg> -->
+              <mat-icon [style.color]="'#888888'" class="GroupIcon">group</mat-icon>
             </th>
             <td mat-cell *matCellDef="let element">{{ '' | fakeamount }}</td>
           </ng-container>

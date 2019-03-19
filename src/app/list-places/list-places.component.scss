@@ -91,11 +91,18 @@ tr.places-element-row:not(.places-expanded-row):active {
 }
 
 .mat-column-dist {
-  width: 30px;
+  width: 43px;
+  font-size: 0.8em;
 }
 
-.mat-column-time {
+.mat-column-expires {
+  width: 43px;
+  font-size: 0.8em;
+}
+
+.mat-column-approaching {
   width: 30px;
+  font-size: 0.8em;
 }
 
 .mat-fab.mat-primary {
@@ -116,4 +123,14 @@ mat-sidenav-container {
   min-width: 100%;
 }
 
+.GroupIcon.mat-icon.notranslate.material-icons.mat-icon-no-color {
+  margin-top: 7px;
+}
 
+app-clock-svg {
+  margin-left: 6px;
+}
+
+app-location-svg {
+  margin-left: 1px;
+}
