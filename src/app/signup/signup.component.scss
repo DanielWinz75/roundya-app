@@ -5,13 +5,18 @@
 
 .ArrangeRoundButtons {
   width: 90px;
-  margin: 15px auto;  
+  margin: 15px auto;
 }
 
 form {
-  position: relative; 
+  position: relative;
   top:10px;
-  left:0;  
+  left:0;
   width:100%;
-  height:100%;  
+  height:100%;
+}
+
+.mat-raised-button.mat-signup {
+  background-color: #666666;
+  color: #fff;
 }

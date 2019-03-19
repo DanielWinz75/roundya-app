@@ -71,15 +71,15 @@
       </div>
 
         <div class="FormElement">
-        <div class="ArrangeRoundButtons">          
-          <button  mat-raised-button type="submit" color="primary">Sign Up</button>
+        <div class="ArrangeRoundButtons">
+          <button  mat-raised-button type="submit" [color]="'signup'">Sign Up</button>
         </div>
         </div>
 
 
-      <mat-error *ngIf="error">
+      <!-- <mat-error *ngIf="error">
           {{ error }}
-      </mat-error>
+      </mat-error> -->
 
   </form>
 

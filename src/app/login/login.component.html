@@ -9,25 +9,20 @@
 
         <div class="FormElement">
       <mat-form-field>
-          <input matInput placeholder="Username" name="username" type="text" #username="ngModel" [(ngModel)]="model.username" />
+          <input matInput placeholder="Username" name="username" type="text" #username="ngModel" [(ngModel)]="model.username" required />
       </mat-form-field>
         </div>
 
       <div class="FormElement">
       <mat-form-field>
-        <input matInput placeholder="Password" name="password" type="password" #password="ngModel" [(ngModel)]="model.password" />
+        <input matInput placeholder="Password" name="password" type="password" #password="ngModel" [(ngModel)]="model.password" required />
       </mat-form-field>
       </div>
 
       <div class="FormElement">
         <div class="ArrangeRoundButtons">
-          <button mat-raised-button type="submit" color="primary" class="Left">Login</button>
-          <button  mat-stroked-button [routerLink]="['/signup']" color="primary" class="Right">Sign Up</button>
+          <button mat-flat-button type="submit" class="Left" [color]="'login'">Login</button>
+          <button  mat-stroked-button [routerLink]="['/signup']" [color]="'signup'" class="Right">Sign Up</button>
         </div>
       </div>
   </form>
-
-  <mat-error *ngIf="error">
-    {{ error }}
-  </mat-error>
-
